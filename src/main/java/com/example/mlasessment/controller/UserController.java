@@ -26,9 +26,11 @@ public class UserController {
     @PostMapping("/feature")
     private ResponseEntity<?> saveUser(@RequestBody Users user) {
 
-        if (!userServices.saveOrUpdate(user)){
+        if (!userServices.validate(user)) {
             return new ResponseEntity<>(null, HttpStatus.NOT_MODIFIED);
+        } else {
+            userServices.saveOrUpdate(user);
+            return new ResponseEntity<>(null, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }

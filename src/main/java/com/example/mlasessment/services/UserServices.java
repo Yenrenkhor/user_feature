@@ -27,15 +27,30 @@ public class UserServices {
         return userRepository.findByFeatureNameAndEmail(featureName, email);
     }
 
-    public boolean saveOrUpdate(@Validated @RequestBody Users user) {
-        if (!userRepository.existsByFeatureNameAndEmail(user.getFeatureName(), user.getEmail())) {
+    public void saveOrUpdate(@Validated @RequestBody Users user) {
             userRepository.save(user);
+    }
+
+    public boolean validate(@Validated @RequestBody Users user) {
+        if (!userRepository.existsByFeatureNameAndEmail(user.getFeatureName(), user.getEmail())){
+            System.out.println("email and feature valid, 200");
             return true;
         }
-        else {
+        else{
+            System.out.println("email and feature exist, 304");
             return false;
         }
     }
+
+//    public boolean saveOrUpdate(@Validated @RequestBody Users user) {
+//        if (!userRepository.existsByFeatureNameAndEmail(user.getFeatureName(), user.getEmail())) {
+//            userRepository.save(user);
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
 
 
 }
