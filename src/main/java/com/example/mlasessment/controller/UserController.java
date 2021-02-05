@@ -27,7 +27,6 @@ public class UserController {
     private ResponseEntity<?> saveUser(@RequestBody Users user) {
 
         if (!userServices.saveOrUpdate(user)){
-            System.out.print(HttpStatus.NOT_MODIFIED);
             return new ResponseEntity<>(null, HttpStatus.NOT_MODIFIED);
         }
         return new ResponseEntity<>(null, HttpStatus.OK);

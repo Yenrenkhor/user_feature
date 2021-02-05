@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Entity
 public class Users {
     @Id
-    @Column(nullable=false)
-    private String featureName;
     @Column(nullable=false, unique=true)
     private String email;
+    @Column(nullable=false)
+    private String featureName;
     @Column(nullable=false)
     private Boolean enable;
 

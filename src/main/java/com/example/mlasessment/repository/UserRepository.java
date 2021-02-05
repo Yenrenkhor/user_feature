@@ -12,5 +12,5 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<Users, Integer>
 {
     Users findByFeatureNameAndEmail(@Param("featureName") String featureName, @Param("email") String email);
-    boolean existsByFeatureNameOrEmail(String featureName, String email);
+    boolean existsByFeatureNameAndEmail(String featureName, String email);
 }

@@ -28,7 +28,7 @@ public class UserServices {
     }
 
     public boolean saveOrUpdate(@Validated @RequestBody Users user) {
-        if (!userRepository.existsByFeatureNameOrEmail(user.getFeatureName(), user.getEmail())) {
+        if (!userRepository.existsByFeatureNameAndEmail(user.getFeatureName(), user.getEmail())) {
             userRepository.save(user);
             return true;
         }
